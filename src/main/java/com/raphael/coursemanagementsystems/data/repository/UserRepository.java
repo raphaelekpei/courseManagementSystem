@@ -1,6 +1,6 @@
-package com.raphael.usersystem.data.repository;
+package com.raphael.coursemanagementsystems.data.repository;
 
-import com.raphael.usersystem.data.model.User;
+import com.raphael.coursemanagementsystems.data.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

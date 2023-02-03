@@ -1,4 +1,4 @@
-package com.raphael.usersystem.dtos.response;
+package com.raphael.coursemanagementsystems.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,2 +1,15 @@
-package com.raphael.coursemanagementsystems.dtos.request;public class AddLessonRequest {
+package com.raphael.coursemanagementsystems.dtos.request;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class AddLessonRequest {
+    private String title;
+    private String description;
 }

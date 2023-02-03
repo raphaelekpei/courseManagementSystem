@@ -1,15 +1,15 @@
-package com.raphael.usersystem.service;
+package com.raphael.coursemanagementsystems.service;
 
-import com.raphael.usersystem.data.model.Address;
-import com.raphael.usersystem.data.model.User;
-import com.raphael.usersystem.data.repository.UserRepository;
-import com.raphael.usersystem.dtos.request.LoginRequest;
-import com.raphael.usersystem.dtos.request.SignUpRequest;
-import com.raphael.usersystem.dtos.request.UpdateUserRequest;
-import com.raphael.usersystem.dtos.response.LoginResponse;
-import com.raphael.usersystem.dtos.response.SignUpResponse;
-import com.raphael.usersystem.dtos.response.UpdateUserResponse;
-import com.raphael.usersystem.exceptions.UserManagementException;
+import com.raphael.coursemanagementsystems.data.model.User;
+import com.raphael.coursemanagementsystems.data.repository.UserRepository;
+import com.raphael.coursemanagementsystems.dtos.request.LoginRequest;
+import com.raphael.coursemanagementsystems.dtos.request.SignUpRequest;
+import com.raphael.coursemanagementsystems.dtos.request.UpdateUserRequest;
+import com.raphael.coursemanagementsystems.dtos.response.LoginResponse;
+import com.raphael.coursemanagementsystems.dtos.response.SignUpResponse;
+import com.raphael.coursemanagementsystems.dtos.response.UpdateUserResponse;
+import com.raphael.coursemanagementsystems.exceptions.UserManagementException;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,14 +33,12 @@ public class UserServiceImpl implements UserService{
         User user = new User(
                 signUpRequest.getFirstName(),
                 signUpRequest.getLastName(),
-                signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
+                signUpRequest.getUsername(),
                 signUpRequest.getPassword(),
-                signUpRequest.getPhoneNumber(),
                 signUpRequest.getAddress(),
-                signUpRequest.getGender(),
-                signUpRequest.getDateOfBirth(),
-                signUpRequest.getNationality()
+                signUpRequest.getNationality(),
+                signUpRequest.getPhoneNumber()
         );
         userRepository.save(user);
         SignUpResponse signUpResponse = new SignUpResponse();
@@ -105,31 +103,6 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void updateUser(String userId, String firstName, String lastName, String phoneNumber, String password, Address address) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isEmpty()){
-            throw new UserManagementException("user not found");
-        }
-        User user = optionalUser.get();
-        if (firstName != null){
-            user.setFirstName(firstName);
-        }
-        if (lastName != null){
-            user.setLastName(lastName);
-        }
-        if (phoneNumber != null){
-            user.setPhoneNumber(phoneNumber);
-        }
-        if (password != null){
-            user.setPassword(password);
-        }
-        if (address != null){
-            user.setAddress(address);
-        }
-        userRepository.save(user);
-    }
-
-    @Override
     public void deleteUserById(String userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isEmpty()){
@@ -157,18 +130,23 @@ public class UserServiceImpl implements UserService{
         if (updateUserRequest.getLastName() != null){
             user.setLastName(updateUserRequest.getLastName());
         }
-        if (!Objects.equals(updateUserRequest.getPassword(), user.getPassword())) {
+        if (updateUserRequest.getPassword() != null){
             user.setPassword(updateUserRequest.getPassword());
         }
-        if (!Objects.equals(updateUserRequest.getEmail(), user.getEmail())){
+
+        if (updateUserRequest.getEmail() != null){
             user.setEmail(updateUserRequest.getEmail());
         }
+
         if (updateUserRequest.getAddress() != user.getAddress()){
             user.setAddress(updateUserRequest.getAddress());
         }
-        if (!Objects.equals(updateUserRequest.getPhoneNumber(), user.getPhoneNumber())){
+        if (updateUserRequest.getPhoneNumber() != null){
             user.setPhoneNumber(updateUserRequest.getPhoneNumber());
         }
+//        if (!Objects.equals(updateUserRequest.getPhoneNumber(), user.getPhoneNumber())){
+//            user.setPhoneNumber(updateUserRequest.getPhoneNumber());
+//        }
         userRepository.save(user);
         UpdateUserResponse updateUserResponse = new UpdateUserResponse();
         updateUserResponse.setMessage("information was successfully updated");

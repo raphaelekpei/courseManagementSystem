@@ -1,8 +1,6 @@
-package com.raphael.usersystem.dtos.request;
+package com.raphael.coursemanagementsystems.dtos.request;
 
-import com.raphael.usersystem.Enum.Gender;
-import com.raphael.usersystem.data.model.Address;
-import com.raphael.usersystem.data.model.Date;
+import com.raphael.coursemanagementsystems.data.model.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,10 +19,6 @@ public class SignUpRequest {
     private String password;
     private String phoneNumber;
     private Address address;
-    private Gender gender;
     private String nationality;
-    private Date dateOfBirth;
-
-
 
 }

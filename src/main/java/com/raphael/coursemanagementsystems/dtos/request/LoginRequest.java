@@ -1,4 +1,4 @@
-package com.raphael.usersystem.dtos.request;
+package com.raphael.coursemanagementsystems.dtos.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

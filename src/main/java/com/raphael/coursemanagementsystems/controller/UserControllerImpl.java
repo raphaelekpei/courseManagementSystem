@@ -1,14 +1,13 @@
-package com.raphael.usersystem.controller;
+package com.raphael.coursemanagementsystems.controller;
 
-import com.raphael.usersystem.data.model.Address;
-import com.raphael.usersystem.data.model.User;
-import com.raphael.usersystem.dtos.request.LoginRequest;
-import com.raphael.usersystem.dtos.request.SignUpRequest;
-import com.raphael.usersystem.dtos.request.UpdateUserRequest;
-import com.raphael.usersystem.dtos.response.LoginResponse;
-import com.raphael.usersystem.dtos.response.SignUpResponse;
-import com.raphael.usersystem.dtos.response.UpdateUserResponse;
-import com.raphael.usersystem.service.UserService;
+import com.raphael.coursemanagementsystems.data.model.User;
+import com.raphael.coursemanagementsystems.dtos.request.LoginRequest;
+import com.raphael.coursemanagementsystems.dtos.request.SignUpRequest;
+import com.raphael.coursemanagementsystems.dtos.request.UpdateUserRequest;
+import com.raphael.coursemanagementsystems.dtos.response.LoginResponse;
+import com.raphael.coursemanagementsystems.dtos.response.SignUpResponse;
+import com.raphael.coursemanagementsystems.dtos.response.UpdateUserResponse;
+import com.raphael.coursemanagementsystems.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -68,24 +67,11 @@ public class UserControllerImpl implements UserController{
         return userService.getAllUser();
     }
 
-    @Override
-    @PutMapping("/update/{userId}")
-    public UpdateUserResponse updateUser(@PathVariable String userId, @RequestBody UpdateUserRequest updateUserRequest) {
-        return userService.updateUser(userId, updateUserRequest);
-    }
 
     @Override
     @PutMapping("/update/{userId}")
-    public String updateUser(
-            @PathVariable String userId,
-            @RequestParam (required = false) String firstName,
-            @RequestParam (required = false) String lastName,
-            @RequestParam (required = false) String email,
-            @RequestParam (required = false) String phoneNumber,
-            @RequestParam (required = false) String password,
-            @RequestParam (required = false) Address address) {
-        userService.updateUser(userId, firstName, lastName, phoneNumber, password, address);
-        return "updated successfully";
+    public UpdateUserResponse updateUser(@PathVariable String userId, @RequestBody @Valid UpdateUserRequest updateUserRequest) {
+        return userService.updateUser(userId, updateUserRequest);
     }
 
     @Override

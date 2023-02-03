@@ -21,10 +21,12 @@ public interface CourseService {
 
     void updateCourse(String subjectId, String courseId, String title, String description);
 
-    void deleteCourseById(String courseId);
+    void deleteCourseById(String subjectId, String courseId);
 
     void deleteAllCoursesBySubject(String subjectId);
 
     List<Course> getAllCoursesBySubject(String subjectId);
+
+    void deleteAllCourses();
 
 }

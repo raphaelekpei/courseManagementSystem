@@ -1,6 +1,6 @@
-package com.raphael.usersystem.dtos.request;
+package com.raphael.coursemanagementsystems.dtos.request;
 
-import com.raphael.usersystem.data.model.Address;
+import com.raphael.coursemanagementsystems.data.model.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

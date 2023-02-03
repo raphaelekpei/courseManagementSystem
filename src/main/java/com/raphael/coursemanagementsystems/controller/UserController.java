@@ -1,13 +1,13 @@
-package com.raphael.usersystem.controller;
+package com.raphael.coursemanagementsystems.controller;
 
-import com.raphael.usersystem.data.model.Address;
-import com.raphael.usersystem.data.model.User;
-import com.raphael.usersystem.dtos.request.LoginRequest;
-import com.raphael.usersystem.dtos.request.SignUpRequest;
-import com.raphael.usersystem.dtos.request.UpdateUserRequest;
-import com.raphael.usersystem.dtos.response.LoginResponse;
-import com.raphael.usersystem.dtos.response.SignUpResponse;
-import com.raphael.usersystem.dtos.response.UpdateUserResponse;
+
+import com.raphael.coursemanagementsystems.data.model.User;
+import com.raphael.coursemanagementsystems.dtos.request.LoginRequest;
+import com.raphael.coursemanagementsystems.dtos.request.SignUpRequest;
+import com.raphael.coursemanagementsystems.dtos.request.UpdateUserRequest;
+import com.raphael.coursemanagementsystems.dtos.response.LoginResponse;
+import com.raphael.coursemanagementsystems.dtos.response.SignUpResponse;
+import com.raphael.coursemanagementsystems.dtos.response.UpdateUserResponse;
 
 import java.util.List;
 
@@ -21,8 +21,6 @@ public interface UserController {
     public User getUserByPhoneNumber(String phoneNumber);
     public List<User> getAllUser();
 
-    public String updateUser(String userId, String firstName, String lastName, String email,
-                             String phoneNumber, String password, Address address);
     public UpdateUserResponse updateUser(String userId, UpdateUserRequest updateUserRequest);
 
     public String deleteUserById(String userId);
